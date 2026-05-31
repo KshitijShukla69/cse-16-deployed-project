@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amazon.in – Online Shopping</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amazon+Ember:wght@400;700&family=Bookerly&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --amazon-dark:   #131921;
+      --amazon-mid:    #232f3e;
+      --amazon-light:  #37475a;
+      --amazon-orange: #febd69;
+      --amazon-yellow: #f90;
+      --amazon-red:    #b12704;
+      --amazon-blue:   #007185;
+      --bg:            #eaeded;
+      --white:         #fff;
+      --text:          #0f1111;
+      --muted:         #565959;
+      --border:        #ddd;
+    }
+
+    body {
+      font-family: 'Amazon Ember', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    header {
+      background: var(--amazon-dark);
+      position: sticky; top: 0; z-index: 100;
+    }
+
+    .nav-top {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 16px; max-width: 1500px; margin: 0 auto;
+    }
+
+    .logo { flex-shrink: 0; cursor: pointer; }
+    .logo img { width: 100px; margin-top: 4px; filter: brightness(1); }
+    .logo-text {
+      color: var(--white); font-size: 26px; font-weight: 700;
+      letter-spacing: -1px; line-height: 1;
+    }
+    .logo-text span { color: var(--amazon-orange); }
+
+    .deliver {
+      display: flex; flex-direction: column; color: var(--white);
+      font-size: 11px; padding: 4px 6px; cursor: pointer; flex-shrink: 0;
+      border: 1px solid transparent; border-radius: 2px;
+    }
+    .deliver:hover { border-color: var(--white); }
+    .deliver strong { font-size: 13px; }
+
+    .search-bar {
+      flex: 1; display: flex; height: 40px; border-radius: 4px; overflow: hidden;
+    }
+    .search-cat {
+      background: #f3f3f3; border: none; padding: 0 8px;
+      font-size: 12px; cursor: pointer; border-right: 1px solid #cdcdcd;
+      color: var(--text);
+    }
+    .search-cat:hover { background: #e8e8e8; }
+    .search-input {
+      flex: 1; border: none; outline: none; padding: 0 10px;
+      font-size: 15px; background: var(--white);
+    }
+    .search-btn {
+      background: var(--amazon-orange); border: none; padding: 0 14px;
+      cursor: pointer; transition: background .15s;
+    }
+    .search-btn:hover { background: var(--amazon-yellow); }
+    .search-btn svg { display: block; }
+
+    .nav-actions { display: flex; gap: 4px; flex-shrink: 0; }
+    .nav-btn {
+      color: var(--white); cursor: pointer;
+      padding: 4px 8px; border-radius: 2px;
+      border: 1px solid transparent;
+      font-size: 12px; line-height: 1.3;
+      text-decoration: none;
+    }
+    .nav-btn:hover { border-color: var(--white); }
+    .nav-btn small { display: block; font-size: 11px; font-weight: 400; }
+    .nav-btn strong { font-size: 13px; }
+    .cart-btn { display: flex; align-items: center; gap: 4px; }
+    .cart-count {
+      background: var(--amazon-orange); color: var(--amazon-dark);
+      border-radius: 50%; width: 18px; height: 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 12px; margin-top: -12px;
+    }
+
+    /* ── SUB-NAV ── */
+    .nav-sub {
+      background: var(--amazon-mid); padding: 0 16px;
+      display: flex; align-items: center; gap: 4px; overflow-x: auto;
+    }
+    .nav-sub::-webkit-scrollbar { height: 0; }
+    .nav-sub a {
+      color: var(--white); white-space: nowrap; font-size: 13px;
+      padding: 8px 10px; border: 1px solid transparent;
+      border-radius: 2px; cursor: pointer; text-decoration: none;
+    }
+    .nav-sub a:hover { border-color: var(--white); }
+    .all-link { display: flex; align-items: center; gap: 5px; font-weight: 700 !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; overflow: hidden;
+      height: 380px; background: linear-gradient(180deg,#667eea,#764ba2,#131921);
+    }
+    .hero-slides { display: flex; height: 100%; transition: transform .5s ease; }
+    .hero-slide {
+      min-width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background-size: cover; background-position: center;
+      position: relative;
+    }
+    .hero-slide::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, var(--amazon-dark));
+    }
+    .hero-content {
+      position: absolute; bottom: 40px; left: 50%;
+      transform: translateX(-50%); text-align: center; z-index: 2;
+    }
+    .hero-content h2 { color: var(--white); font-size: 32px; text-shadow: 0 2px 8px rgba(0,0,0,.5); }
+    .hero-content p  { color: var(--amazon-orange); font-size: 16px; margin-top: 6px; }
+    .hero-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,.85); border: none; border-radius: 3px;
+      width: 38px; height: 80px; cursor: pointer; font-size: 22px;
+      z-index: 3; transition: background .2s; color: var(--amazon-dark);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-nav:hover { background: var(--white); }
+    .hero-nav.prev { left: 0; }
+    .hero-nav.next { right: 0; }
+    .hero-dots {
+      position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 6px; z-index: 3;
+    }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,.5); cursor: pointer; transition: background .2s;
+    }
+    .dot.active { background: var(--white); }
+
+    /* ── MAIN GRID ── */
+    .main { max-width: 1500px; margin: 0 auto; padding: 16px; }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px; margin-top: -80px; position: relative; z-index: 5;
+    }
+
+    .card {
+      background: var(--white); border-radius: 4px;
+      padding: 20px; overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,.1);
+      transition: box-shadow .2s;
+    }
+    .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.18); }
+    .card h3 { font-size: 17px; margin-bottom: 14px; color: var(--text); }
+    .card-imgs {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px;
+    }
+    .card-imgs img {
+      width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 2px;
+      background: #f0f0f0;
+    }
+    .card a {
+      color: var(--amazon-blue); font-size: 13px; cursor: pointer;
+      text-decoration: none;
+    }
+    .card a:hover { color: var(--amazon-red); text-decoration: underline; }
+
+    /* ── SECTION HEADER ── */
+    .section { margin-top: 24px; }
+    .section-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .section-header h2 { font-size: 21px; }
+    .section-header a {
+      color: var(--amazon-blue); font-size: 13px; cursor: pointer; text-decoration: none;
+    }
+    .section-header a:hover { text-decoration: underline; color: var(--amazon-red); }
+
+    /* ── PRODUCT ROW ── */
+    .products-row {
+      display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px;
+    }
+    .products-row::-webkit-scrollbar { height: 5px; }
+    .products-row::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+    .products-row::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; }
+
+    .product-card {
+      min-width: 190px; max-width: 190px; background: var(--white);
+      border-radius: 4px; padding: 14px; cursor: pointer;
+      transition: box-shadow .2s; flex-shrink: 0;
+    }
+    .product-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,.15); }
+    .product-card img {
+      width: 100%; aspect-ratio: 1; object-fit: contain;
+      margin-bottom: 10px; background: #f8f8f8; border-radius: 3px;
+    }
+    .product-card .name { font-size: 13px; margin-bottom: 4px; color: var(--text); }
+    .stars { color: var(--amazon-orange); font-size: 13px; }
+    .price-tag { font-size: 15px; font-weight: 700; color: var(--amazon-red); margin-top: 4px; }
+    .price-tag small { color: var(--muted); font-weight: 400; font-size: 12px; text-decoration: line-through; }
+    .badge {
+      display: inline-block; background: var(--amazon-red); color: var(--white);
+      font-size: 10px; padding: 1px 5px; border-radius: 2px; margin-bottom: 4px;
+    }
+
+    /* ── BANNER ── */
+    .promo-banner {
+      background: linear-gradient(135deg, #232f3e 0%, #37475a 100%);
+      border-radius: 6px; padding: 32px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 24px; gap: 20px;
+    }
+    .promo-text h2 { color: var(--amazon-orange); font-size: 26px; }
+    .promo-text p  { color: #ccc; margin-top: 6px; font-size: 14px; }
+    .promo-btn {
+      background: var(--amazon-orange); border: none; padding: 12px 28px;
+      font-size: 15px; font-weight: 700; border-radius: 4px; cursor: pointer;
+      transition: background .2s; white-space: nowrap; color: var(--amazon-dark);
+    }
+    .promo-btn:hover { background: var(--amazon-yellow); }
+
+    /* ── CART SIDEBAR ── */
+    .cart-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,.4);
+      z-index: 200; opacity: 0; pointer-events: none; transition: opacity .25s;
+    }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+    .cart-panel {
+      position: fixed; right: -420px; top: 0; bottom: 0; width: 420px;
+      background: var(--white); z-index: 201; padding: 20px;
+      overflow-y: auto; transition: right .3s ease; box-shadow: -4px 0 20px rgba(0,0,0,.2);
+    }
+    .cart-overlay.open .cart-panel { right: 0; }
+    .cart-panel h2 { font-size: 20px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .cart-item {
+      display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid #f0f0f0;
+      align-items: flex-start;
+    }
+    .cart-item img { width: 70px; height: 70px; object-fit: contain; background: #f8f8f8; border-radius: 3px; }
+    .cart-item-info { flex: 1; }
+    .cart-item-info .name { font-size: 13px; margin-bottom: 4px; }
+    .cart-item-info .price { font-weight: 700; color: var(--amazon-red); }
+    .qty-ctrl { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+    .qty-btn {
+      width: 26px; height: 26px; border: 1px solid var(--border); background: #f0f2f2;
+      border-radius: 3px; cursor: pointer; font-size: 16px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .qty-btn:hover { background: #e3e6e6; }
+    .remove-btn { color: var(--amazon-blue); font-size: 12px; cursor: pointer; margin-top: 4px; }
+    .remove-btn:hover { text-decoration: underline; color: var(--amazon-red); }
+    .cart-footer { margin-top: 16px; }
+    .cart-total { font-size: 18px; font-weight: 700; text-align: right; margin-bottom: 14px; }
+    .checkout-btn {
+      width: 100%; padding: 12px; background: var(--amazon-orange);
+      border: none; border-radius: 20px; font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: background .2s; color: var(--amazon-dark);
+    }
+    .checkout-btn:hover { background: var(--amazon-yellow); }
+    .empty-cart { text-align: center; padding: 40px 0; color: var(--muted); }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+      background: #333; color: var(--white); padding: 12px 24px; border-radius: 24px;
+      font-size: 14px; z-index: 300; transition: transform .3s ease; white-space: nowrap;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--amazon-mid); color: #ddd;
+      margin-top: 40px; padding: 32px 40px;
+      text-align: center; font-size: 12px;
+    }
+    .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-bottom: 16px; }
+    .footer-links a { color: #ddd; text-decoration: none; }
+    .footer-links a:hover { text-decoration: underline; }
+    .footer-bottom { color: #888; }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="nav-top">
+    <div class="logo" onclick="scrollTo(0,0)">
+      <div class="logo-text">amazon<span>.in</span></div>
+    </div>
+
+    <div class="deliver">
+      <small>Deliver to</small>
+      <strong>📍 India</strong>
+    </div>
+
+    <div class="search-bar">
+      <select class="search-cat" id="searchCat">
+        <option>All</option>
+        <option>Electronics</option>
+        <option>Fashion</option>
+        <option>Books</option>
+        <option>Home</option>
+        <option>Sports</option>
+      </select>
+      <input class="search-input" id="searchInput" type="text" placeholder="Search Amazon.in"
+             onkeydown="if(event.key==='Enter')doSearch()"/>
+      <button class="search-btn" onclick="doSearch()" aria-label="Search">
+        <svg width="20" height="20" fill="#131921" viewBox="0 0 24 24">
+          <path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"
+                stroke="#131921" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="nav-actions">
+      <a class="nav-btn"><small>Hello, Sign in</small><strong>Account & Lists</strong></a>
+      <a class="nav-btn"><small>Returns</small><strong>& Orders</strong></a>
+      <a class="nav-btn cart-btn" id="cartBtn" onclick="toggleCart()">
+        <span id="cartCount" class="cart-count">0</span>
+        🛒 <strong>Cart</strong>
+      </a>
+    </div>
+  </div>
+
+  <nav class="nav-sub">
+    <a class="all-link">☰ All</a>
+    <a href="#">Today's Deals</a>
+    <a href="#">Customer Service</a>
+    <a href="#">Registry</a>
+    <a href="#">Gift Cards</a>
+    <a href="#">Electronics</a>
+    <a href="#">Books</a>
+    <a href="#">Fashion</a>
+    <a href="#">Home & Garden</a>
+    <a href="#">Sports</a>
+    <a href="#">Automotive</a>
+    <a href="#">Sell</a>
+  </nav>
+</header>
+
+<!-- ── HERO ── -->
+<div class="hero" id="hero">
+  <div class="hero-slides" id="heroSlides"></div>
+  <button class="hero-nav prev" onclick="moveSlide(-1)">&#8249;</button>
+  <button class="hero-nav next" onclick="moveSlide(1)">&#8250;</button>
+  <div class="hero-dots" id="heroDots"></div>
+</div>
+
+<!-- ── MAIN ── -->
+<div class="main">
+
+  <!-- Category Cards -->
+  <div class="cards-grid" id="categoryCards"></div>
+
+  <!-- Deal of the Day -->
+  <div class="section">
+    <div class="section-header">
+      <h2>🔥 Deal of the Day</h2>
+      <a href="#">See all deals »</a>
+    </div>
+    <div class="products-row" id="dealsRow"></div>
+  </div>
+
+  <!-- Best Sellers -->
+  <div class="section">
+    <div class="section-header">
+      <h2>⭐ Best Sellers in Electronics</h2>
+      <a href="#">See more »</a>
+    </div>
+    <div class="products-row" id="bestSellersRow"></div>
+  </div>
+
+  <!-- Promo Banner -->
+  <div class="promo-banner">
+    <div class="promo-text">
+      <h2>Prime Members get FREE delivery</h2>
+      <p>Shop millions of items with fast, free shipping. Start your 30-day free trial today.</p>
+    </div>
+    <button class="promo-btn">Try Prime Free</button>
+  </div>
+
+  <!-- New Arrivals -->
+  <div class="section">
+    <div class="section-header">
+      <h2>🆕 New Arrivals</h2>
+      <a href="#">Explore all »</a>
+    </div>
+    <div class="products-row" id="newArrivalsRow"></div>
+  </div>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-links">
+    <a href="#">Careers</a><a href="#">Blog</a><a href="#">About Amazon</a>
+    <a href="#">Investor Relations</a><a href="#">Amazon Devices</a>
+    <a href="#">Science</a><a href="#">Sell products on Amazon</a>
+    <a href="#">Become an Affiliate</a><a href="#">Advertise Your Products</a>
+    <a href="#">Help</a><a href="#">Privacy Notice</a><a href="#">Conditions of Use</a>
+  </div>
+  <div class="footer-bottom">© 1996–2026, Amazon.com, Inc. or its affiliates</div>
+</footer>
+
+<!-- ── CART SIDEBAR ── -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart(event)">
+  <div class="cart-panel">
+    <h2>🛒 Shopping Cart</h2>
+    <div id="cartItems"></div>
+    <div class="cart-footer" id="cartFooter"></div>
+  </div>
+</div>
+
+<!-- ── TOAST ── -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+
+const heroData = [
+  { bg: 'linear-gradient(135deg,#1a1a2e,#16213e,#0f3460)', title: 'Mega Electronics Sale', sub: 'Up to 70% off on Top Brands' },
+  { bg: 'linear-gradient(135deg,#2d6a4f,#40916c,#74c69d)', title: 'Fresh Fashion Arrivals', sub: 'New Season, New Styles' },
+  { bg: 'linear-gradient(135deg,#7b2d00,#c0392b,#e74c3c)', title: "Amazon Great Indian Sale", sub: 'Biggest Deals of the Year' },
+  { bg: 'linear-gradient(135deg,#2c3e50,#3498db,#2980b9)', title: 'Smart Home Essentials', sub: 'Build your connected home' },
+];
+
+const categories = [
+  { title: 'Electronics', imgs: ['📱','💻','📷','🎧'], see: 'See all electronics' },
+  { title: 'Fashion', imgs: ['👗','👠','👜','⌚'], see: 'See all fashion' },
+  { title: 'Home & Kitchen', imgs: ['🛋️','🍳','🪴','🧹'], see: 'See all home' },
+  { title: 'Books', imgs: ['📚','📖','🧠','✏️'], see: 'Shop all books' },
+];
+
+// Product factory
+const makeProducts = (list) => list.map((p, i) => ({ id: Date.now() + i, ...p }));
+
+const deals = makeProducts([
+  { name: 'boAt Rockerz 450 Wireless Headphones', price: 1299, mrp: 3990, rating: 4.3, rCount: 12450, emoji: '🎧', badge: '67% off' },
+  { name: 'OnePlus Nord CE 3 Lite 5G', price: 19999, mrp: 25999, rating: 4.5, rCount: 8320, emoji: '📱', badge: '23% off' },
+  { name: 'Xiaomi 11 Lite 5G NE', price: 26999, mrp: 32999, rating: 4.4, rCount: 5620, emoji: '📲', badge: '18% off' },
+  { name: 'Samsung 43" Crystal 4K TV', price: 32990, mrp: 54900, rating: 4.6, rCount: 3410, emoji: '📺', badge: '40% off' },
+  { name: 'JBL Flip 6 Portable Speaker', price: 8999, mrp: 13999, rating: 4.7, rCount: 6780, emoji: '🔊', badge: '36% off' },
+  { name: 'Apple AirPods 3rd Gen', price: 16900, mrp: 19900, rating: 4.8, rCount: 21000, emoji: '🎵', badge: '15% off' },
+]);
+
+const bestSellers = makeProducts([
+  { name: 'Redmi Note 13 Pro 5G', price: 24999, mrp: 29999, rating: 4.6, rCount: 41200, emoji: '📱', badge: 'Best Seller' },
+  { name: 'Amazon Echo Dot (5th Gen)', price: 4499, mrp: 5499, rating: 4.5, rCount: 35600, emoji: '🔵', badge: 'Amazon Pick' },
+  { name: 'Logitech MX Master 3S Mouse', price: 7995, mrp: 9995, rating: 4.8, rCount: 18700, emoji: '🖱️', badge: '' },
+  { name: 'Kindle Paperwhite', price: 14999, mrp: 18999, rating: 4.7, rCount: 28900, emoji: '📖', badge: 'Best Seller' },
+  { name: 'TP-Link Deco AX3000 Wi-Fi 6', price: 8499, mrp: 12499, rating: 4.5, rCount: 7200, emoji: '📡', badge: '' },
+  { name: 'Zebronics Zeb-Sound Bomb 1', price: 699, mrp: 1299, rating: 4.1, rCount: 53000, emoji: '🎧', badge: '#1 Best Seller' },
+]);
+
+const newArrivals = makeProducts([
+  { name: 'Nothing Phone (2a) 5G', price: 23999, mrp: 23999, rating: 4.4, rCount: 520, emoji: '📱', badge: 'New' },
+  { name: 'Realme GT 6T 5G', price: 35999, mrp: 35999, rating: 4.5, rCount: 310, emoji: '🚀', badge: 'New' },
+  { name: 'iQOO Z9 Turbo 5G', price: 22999, mrp: 24999, rating: 4.6, rCount: 890, emoji: '⚡', badge: 'New' },
+  { name: 'Oppo Find X7 Ultra', price: 79999, mrp: 85000, rating: 4.7, rCount: 230, emoji: '📸', badge: 'New' },
+  { name: 'Noise ColorFit Ultra 3', price: 2999, mrp: 5999, rating: 4.3, rCount: 1400, emoji: '⌚', badge: 'New' },
+]);
+
+// ── STATE ──────────────────────────────────────────────────────────────────────
+let cart = JSON.parse(localStorage.getItem('amz_cart') || '[]');
+let currentSlide = 0;
+let slideTimer;
+
+// ── HERO ──────────────────────────────────────────────────────────────────────
+function buildHero() {
+  const slidesEl = document.getElementById('heroSlides');
+  const dotsEl   = document.getEle
