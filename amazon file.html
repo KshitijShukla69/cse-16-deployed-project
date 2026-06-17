@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Amazonclone.in</title>
-  <link href="https://fonts.googleapis.com/css2?family=Amazon+Ember:wght@400;700&family=Bookerly&display=swap" rel="stylesheet"/>
+  <title>amazonclone.in – Online Shopping</title>
+  <link href="https://fonts.googleapis.com/css2?family=amazonclone+Ember:wght@400;700&family=Bookerly&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --amazon-dark:   #131921;
-      --amazon-mid:    #232f3e;
-      --amazon-light:  #37475a;
-      --amazon-orange: #febd69;
-      --amazon-yellow: #f90;
-      --amazon-red:    #b12704;
-      --amazon-blue:   #007185;
+      --amazonclone-dark:   #131921;
+      --amazonclone-mid:    #232f3e;
+      --amazonclone-light:  #37475a;
+      --amazonclone-orange: #febd69;
+      --amazonclone-yellow: #f90;
+      --amazonclone-red:    #b12704;
+      --amazonclone-blue:   #007185;
       --bg:            #eaeded;
       --white:         #fff;
       --text:          #0f1111;
@@ -24,7 +24,7 @@
     }
 
     body {
-      font-family: 'Amazon Ember', Arial, sans-serif;
+      font-family: 'amazonclone Ember', Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
@@ -32,7 +32,7 @@
 
     /* ── NAV ── */
     header {
-      background: var(--amazon-dark);
+      background: var(--amazonclone-dark);
       position: sticky; top: 0; z-index: 100;
     }
 
@@ -47,7 +47,7 @@
       color: var(--white); font-size: 26px; font-weight: 700;
       letter-spacing: -1px; line-height: 1;
     }
-    .logo-text span { color: var(--amazon-orange); }
+    .logo-text span { color: var(--amazonclone-orange); }
 
     .deliver {
       display: flex; flex-direction: column; color: var(--white);
@@ -71,10 +71,10 @@
       font-size: 15px; background: var(--white);
     }
     .search-btn {
-      background: var(--amazon-orange); border: none; padding: 0 14px;
+      background: var(--amazonclone-orange); border: none; padding: 0 14px;
       cursor: pointer; transition: background .15s;
     }
-    .search-btn:hover { background: var(--amazon-yellow); }
+    .search-btn:hover { background: var(--amazonclone-yellow); }
     .search-btn svg { display: block; }
 
     .nav-actions { display: flex; gap: 4px; flex-shrink: 0; }
@@ -90,7 +90,7 @@
     .nav-btn strong { font-size: 13px; }
     .cart-btn { display: flex; align-items: center; gap: 4px; }
     .cart-count {
-      background: var(--amazon-orange); color: var(--amazon-dark);
+      background: var(--amazonclone-orange); color: var(--amazonclone-dark);
       border-radius: 50%; width: 18px; height: 18px;
       display: flex; align-items: center; justify-content: center;
       font-weight: 700; font-size: 12px; margin-top: -12px;
@@ -98,7 +98,7 @@
 
     /* ── SUB-NAV ── */
     .nav-sub {
-      background: var(--amazon-mid); padding: 0 16px;
+      background: var(--amazonclone-mid); padding: 0 16px;
       display: flex; align-items: center; gap: 4px; overflow-x: auto;
     }
     .nav-sub::-webkit-scrollbar { height: 0; }
@@ -124,19 +124,19 @@
     }
     .hero-slide::after {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 40%, var(--amazon-dark));
+      background: linear-gradient(to bottom, transparent 40%, var(--amazonclone-dark));
     }
     .hero-content {
       position: absolute; bottom: 40px; left: 50%;
       transform: translateX(-50%); text-align: center; z-index: 2;
     }
     .hero-content h2 { color: var(--white); font-size: 32px; text-shadow: 0 2px 8px rgba(0,0,0,.5); }
-    .hero-content p  { color: var(--amazon-orange); font-size: 16px; margin-top: 6px; }
+    .hero-content p  { color: var(--amazonclone-orange); font-size: 16px; margin-top: 6px; }
     .hero-nav {
       position: absolute; top: 50%; transform: translateY(-50%);
       background: rgba(255,255,255,.85); border: none; border-radius: 3px;
       width: 38px; height: 80px; cursor: pointer; font-size: 22px;
-      z-index: 3; transition: background .2s; color: var(--amazon-dark);
+      z-index: 3; transition: background .2s; color: var(--amazonclone-dark);
       display: flex; align-items: center; justify-content: center;
     }
     .hero-nav:hover { background: var(--white); }
@@ -177,10 +177,10 @@
       background: #f0f0f0;
     }
     .card a {
-      color: var(--amazon-blue); font-size: 13px; cursor: pointer;
+      color: var(--amazonclone-blue); font-size: 13px; cursor: pointer;
       text-decoration: none;
     }
-    .card a:hover { color: var(--amazon-red); text-decoration: underline; }
+    .card a:hover { color: var(--amazonclone-red); text-decoration: underline; }
 
     /* ── SECTION HEADER ── */
     .section { margin-top: 24px; }
@@ -190,9 +190,9 @@
     }
     .section-header h2 { font-size: 21px; }
     .section-header a {
-      color: var(--amazon-blue); font-size: 13px; cursor: pointer; text-decoration: none;
+      color: var(--amazonclone-blue); font-size: 13px; cursor: pointer; text-decoration: none;
     }
-    .section-header a:hover { text-decoration: underline; color: var(--amazon-red); }
+    .section-header a:hover { text-decoration: underline; color: var(--amazonclone-red); }
 
     /* ── PRODUCT ROW ── */
     .products-row {
@@ -213,11 +213,11 @@
       margin-bottom: 10px; background: #f8f8f8; border-radius: 3px;
     }
     .product-card .name { font-size: 13px; margin-bottom: 4px; color: var(--text); }
-    .stars { color: var(--amazon-orange); font-size: 13px; }
-    .price-tag { font-size: 15px; font-weight: 700; color: var(--amazon-red); margin-top: 4px; }
+    .stars { color: var(--amazonclone-orange); font-size: 13px; }
+    .price-tag { font-size: 15px; font-weight: 700; color: var(--amazonclone-red); margin-top: 4px; }
     .price-tag small { color: var(--muted); font-weight: 400; font-size: 12px; text-decoration: line-through; }
     .badge {
-      display: inline-block; background: var(--amazon-red); color: var(--white);
+      display: inline-block; background: var(--amazonclone-red); color: var(--white);
       font-size: 10px; padding: 1px 5px; border-radius: 2px; margin-bottom: 4px;
     }
 
@@ -228,14 +228,14 @@
       display: flex; align-items: center; justify-content: space-between;
       margin-top: 24px; gap: 20px;
     }
-    .promo-text h2 { color: var(--amazon-orange); font-size: 26px; }
+    .promo-text h2 { color: var(--amazonclone-orange); font-size: 26px; }
     .promo-text p  { color: #ccc; margin-top: 6px; font-size: 14px; }
     .promo-btn {
-      background: var(--amazon-orange); border: none; padding: 12px 28px;
+      background: var(--amazonclone-orange); border: none; padding: 12px 28px;
       font-size: 15px; font-weight: 700; border-radius: 4px; cursor: pointer;
-      transition: background .2s; white-space: nowrap; color: var(--amazon-dark);
+      transition: background .2s; white-space: nowrap; color: var(--amazonclone-dark);
     }
-    .promo-btn:hover { background: var(--amazon-yellow); }
+    .promo-btn:hover { background: var(--amazonclone-yellow); }
 
     /* ── CART SIDEBAR ── */
     .cart-overlay {
@@ -257,7 +257,7 @@
     .cart-item img { width: 70px; height: 70px; object-fit: contain; background: #f8f8f8; border-radius: 3px; }
     .cart-item-info { flex: 1; }
     .cart-item-info .name { font-size: 13px; margin-bottom: 4px; }
-    .cart-item-info .price { font-weight: 700; color: var(--amazon-red); }
+    .cart-item-info .price { font-weight: 700; color: var(--amazonclone-red); }
     .qty-ctrl { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
     .qty-btn {
       width: 26px; height: 26px; border: 1px solid var(--border); background: #f0f2f2;
@@ -265,16 +265,16 @@
       display: flex; align-items: center; justify-content: center;
     }
     .qty-btn:hover { background: #e3e6e6; }
-    .remove-btn { color: var(--amazon-blue); font-size: 12px; cursor: pointer; margin-top: 4px; }
-    .remove-btn:hover { text-decoration: underline; color: var(--amazon-red); }
+    .remove-btn { color: var(--amazonclone-blue); font-size: 12px; cursor: pointer; margin-top: 4px; }
+    .remove-btn:hover { text-decoration: underline; color: var(--amazonclone-red); }
     .cart-footer { margin-top: 16px; }
     .cart-total { font-size: 18px; font-weight: 700; text-align: right; margin-bottom: 14px; }
     .checkout-btn {
-      width: 100%; padding: 12px; background: var(--amazon-orange);
+      width: 100%; padding: 12px; background: var(--amazonclone-orange);
       border: none; border-radius: 20px; font-size: 15px; font-weight: 700;
-      cursor: pointer; transition: background .2s; color: var(--amazon-dark);
+      cursor: pointer; transition: background .2s; color: var(--amazonclone-dark);
     }
-    .checkout-btn:hover { background: var(--amazon-yellow); }
+    .checkout-btn:hover { background: var(--amazonclone-yellow); }
     .empty-cart { text-align: center; padding: 40px 0; color: var(--muted); }
 
     /* ── TOAST ── */
@@ -287,7 +287,7 @@
 
     /* ── FOOTER ── */
     footer {
-      background: var(--amazon-mid); color: #ddd;
+      background: var(--amazonclone-mid); color: #ddd;
       margin-top: 40px; padding: 32px 40px;
       text-align: center; font-size: 12px;
     }
@@ -303,7 +303,7 @@
 <header>
   <div class="nav-top">
     <div class="logo" onclick="scrollTo(0,0)">
-      <div class="logo-text">amazon-clone<span>.in</span></div>
+      <div class="logo-text">amazonclone<span>.in</span></div>
     </div>
 
     <div class="deliver">
@@ -320,7 +320,7 @@
         <option>Home</option>
         <option>Sports</option>
       </select>
-      <input class="search-input" id="searchInput" type="text" placeholder="Search Amazon.in"
+      <input class="search-input" id="searchInput" type="text" placeholder="Search amazonclone.in"
              onkeydown="if(event.key==='Enter')doSearch()"/>
       <button class="search-btn" onclick="doSearch()" aria-label="Search">
         <svg width="20" height="20" fill="#131921" viewBox="0 0 24 24">
@@ -355,6 +355,9 @@
     <a href="#">Sell</a>
   </nav>
 </header>
+<div style="background:#fff3cd;color:#856404;padding:12px;text-align:center;font-weight:bold;border-bottom:1px solid #ffeeba;">
+⚠️ Educational Demo Project. This website is not affiliated with Amazon and does not sell real products.
+</div>
 
 <!-- ── HERO ── -->
 <div class="hero" id="hero">
@@ -411,13 +414,13 @@
 <!-- ── FOOTER ── -->
 <footer>
   <div class="footer-links">
-    <a href="#">Careers</a><a href="#">Blog</a><a href="#">About Amazon</a>
-    <a href="#">Investor Relations</a><a href="#">Amazon Devices</a>
-    <a href="#">Science</a><a href="#">Sell products on Amazon</a>
+    <a href="#">Careers</a><a href="#">Blog</a><a href="#">About amazonclone</a>
+    <a href="#">Investor Relations</a><a href="#">amazonclone Devices</a>
+    <a href="#">Science</a><a href="#">Sell products on amazonclone</a>
     <a href="#">Become an Affiliate</a><a href="#">Advertise Your Products</a>
     <a href="#">Help</a><a href="#">Privacy Notice</a><a href="#">Conditions of Use</a>
   </div>
-  <div class="footer-bottom">© 1996–2026, Amazon.com, Inc. or its affiliates</div>
+  <div class="footer-bottom">© 1996–2026, amazonclone.com, Inc. or its affiliates</div>
 </footer>
 
 <!-- ── CART SIDEBAR ── -->
@@ -438,7 +441,7 @@
 const heroData = [
   { bg: 'linear-gradient(135deg,#1a1a2e,#16213e,#0f3460)', title: 'Mega Electronics Sale', sub: 'Up to 70% off on Top Brands' },
   { bg: 'linear-gradient(135deg,#2d6a4f,#40916c,#74c69d)', title: 'Fresh Fashion Arrivals', sub: 'New Season, New Styles' },
-  { bg: 'linear-gradient(135deg,#7b2d00,#c0392b,#e74c3c)', title: "Amazon Great Indian Sale", sub: 'Biggest Deals of the Year' },
+  { bg: 'linear-gradient(135deg,#7b2d00,#c0392b,#e74c3c)', title: "amazonclone Great Indian Sale", sub: 'Biggest Deals of the Year' },
   { bg: 'linear-gradient(135deg,#2c3e50,#3498db,#2980b9)', title: 'Smart Home Essentials', sub: 'Build your connected home' },
 ];
 
@@ -463,7 +466,7 @@ const deals = makeProducts([
 
 const bestSellers = makeProducts([
   { name: 'Redmi Note 13 Pro 5G', price: 24999, mrp: 29999, rating: 4.6, rCount: 41200, emoji: '📱', badge: 'Best Seller' },
-  { name: 'Amazon Echo Dot (5th Gen)', price: 4499, mrp: 5499, rating: 4.5, rCount: 35600, emoji: '🔵', badge: 'Amazon Pick' },
+  { name: 'amazonclone Echo Dot (5th Gen)', price: 4499, mrp: 5499, rating: 4.5, rCount: 35600, emoji: '🔵', badge: 'amazonclone Pick' },
   { name: 'Logitech MX Master 3S Mouse', price: 7995, mrp: 9995, rating: 4.8, rCount: 18700, emoji: '🖱️', badge: '' },
   { name: 'Kindle Paperwhite', price: 14999, mrp: 18999, rating: 4.7, rCount: 28900, emoji: '📖', badge: 'Best Seller' },
   { name: 'TP-Link Deco AX3000 Wi-Fi 6', price: 8499, mrp: 12499, rating: 4.5, rCount: 7200, emoji: '📡', badge: '' },
